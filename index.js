@@ -38,7 +38,12 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://santhosh-travel-log-app.netlify.app", // Allow your front-end domain
+    credentials: true, // Allow cookies to be sent
+  })
+);
 
 app.use(morgan("common"));
 
