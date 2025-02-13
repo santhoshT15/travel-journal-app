@@ -38,13 +38,14 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "https://santhosh-travel-log-app.netlify.app", // Allow your front-end domain
-    credentials: true, // Allow cookies to be sent
-  })
-);
+const corsOptions = {
+  origin: "https://santhosh-travel-log-app.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
+app.use(cors(corsOptions));
 app.use(morgan("common"));
 
 app.get("/get-signature", (req, res) => {
