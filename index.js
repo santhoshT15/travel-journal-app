@@ -45,7 +45,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Preflight response
 app.use(morgan("common"));
 
 app.get("/get-signature", (req, res) => {
